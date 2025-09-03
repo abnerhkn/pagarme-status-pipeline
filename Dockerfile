@@ -11,3 +11,18 @@ COPY requirements.txt /requirements.txt
 RUN pip install --no-cache-dir -r /requirements.txt
 RUN pip install --no-cache-dir feedparser beautifulsoup4 requests
 
+
+COPY ./dags /opt/airflow/dags
+COPY ./etl /opt/airflow/etl
+COPY ./alerts /opt/airflow/alerts
+COPY ./db /opt/airflow/db
+COPY ./data /opt/airflow/data
+
+
+ENV AIRFLOW__CORE__EXECUTOR=LocalExecutor
+
+
+EXPOSE 8080
+
+
+CMD ["airflow", "standalone"]

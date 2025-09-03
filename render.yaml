@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: pagarme-airflow
+    env: docker
+    repo: https://github.com/abnerhkn/pagarme-status-pipeline
+    branch: main
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
